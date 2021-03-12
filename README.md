@@ -5,7 +5,8 @@
 ```bash
 pip install linkedin-jobs-pyscraper
 ```
-2. Example Usage
+## Example Usage
+2. Use it in your code
 ```python
 from linkedin_jobs_pyscraper.models.search.searcher import Searcher
 from linkedin_jobs_pyscraper.models.filters import filters
