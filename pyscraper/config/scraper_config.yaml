@@ -1,13 +1,9 @@
 ## bs4 config
-job_title_element: li
 
-job_title_element_class: 'result-card job-result-card result-card--with-hover-state'
 
 search_url: https://www.linkedin.com/jobs/search?keywords={}&location=Germany&geoId=101282230&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1&redirect=false&position=1&pageNum={}
 
 job_detail_url: https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{}
-
-job_id_element_identifier: data-id
 
 total_search_pages: 50
 

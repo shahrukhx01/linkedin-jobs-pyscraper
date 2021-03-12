@@ -3,20 +3,18 @@ import yaml
 from scraper.exceptions.exception import InvalidConfigurationException
 from datetime import datetime, timedelta
 from dateutil.relativedelta import *
-#from elasticsearch import Elasticsearch 
-from scraper.config.credentials import credentials
+
 import json
 import pymongo
 
 def read_config(config_path):
     if not config_path:
-        config_path = 'scraper/config/scraper_config.yaml'
+        config_path = 'pyscraper/config/scraper_config.yaml'
 
     with open(r'{}'.format(config_path)) as file:
         # The FullLoader parameter handles the conversion from YAML
         # scalar values to Python the dictionary format
         scraper_config = yaml.load(file, Loader=yaml.FullLoader)
-        print(credentials)
     return (scraper_config, credentials)
 
 def get_logger():
@@ -30,17 +28,6 @@ def write_to_file(data, file_path):
 def read_from_file(file_path):
     with open(file_path,'r') as f:
         return [job_id.rstrip('\n') for job_id in f.readlines()] ## preprocess job_ids
-
-def get_mongo_client(scraper_config, credentials):
-    mongo_collection = None
-    try:
-        mongo_client = pymongo.MongoClient(scraper_config['mongo_connect_url'].format(credentials['mongo_username'], credentials['mongo_password'], scraper_config['mongo_db']))
-        mongo_db = mongo_client[scraper_config['mongo_db']]
-        mongo_collection = mongo_db[scraper_config['mongo_collection']]
-    except Exception as e:
-        print(e)
-    
-    return mongo_collection 
 
 
 

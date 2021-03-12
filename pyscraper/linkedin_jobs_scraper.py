@@ -9,24 +9,25 @@ from urllib.parse import urlencode, quote_plus
 
 
 
-class LinkedInJobsScraper:
+class LinkedInJobsPyScraper:
     def __init__(self, num_jobs, query, config_path=None):
 
         self.num_jobs = num_jobs
         self.query = query
-        self.job_ids = [] ## list for holding per page job ids
-        
-        self.scraper_config, self.credentials = read_config(config_path) ## loading configuration
         self.scraper_logger = get_logger() ## get logger for logging system state
+
+        job_ids = list() ## list for holding per page job ids as static variable
+        scraper_config = read_config(config_path) ## loading configuration as static variable
+        
        
         
         ## connecting to mongo db cloud
-        self.mongo_collection = get_mongo_client(self.scraper_config, self.credentials)
+        ##self.mongo_collection = get_mongo_client(self.scraper_config, self.credentials)
 
         #self.es_client = Elasticsearch(hosts=self.scraper_config['es_host'])
                                         
     
-    def search_jobs_ids(self, search_term):
+    """def search_jobs_ids(self, search_term):
         for i in range(self.scraper_config['total_search_pages']):
             # Set the URL you want to webscrape from
             url = self.scraper_config['search_url'].format(search_term,i)
@@ -47,7 +48,7 @@ class LinkedInJobsScraper:
                 self.scraper_logger.info('Found {} new jobs'.format(len(self.job_ids)))
                 self.fetch_job_info()
             else:
-                self.scraper_logger.info('Found {} new jobs'.format(len(self.job_ids)))
+                self.scraper_logger.info('Found {} new jobs'.format(len(self.job_ids)))"""
             
 
     def extract_job_ids(self, soup):
