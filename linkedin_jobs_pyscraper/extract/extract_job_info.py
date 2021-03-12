@@ -1,7 +1,7 @@
-from models.extract.extractor import IdExtractor, DataExtractor
 import logging
-from utils import helpers
-from models.job.job import Job
+from linkedin_jobs_pyscraper.models.extract.extractor import IdExtractor, DataExtractor
+from linkedin_jobs_pyscraper.utils import helpers
+from linkedin_jobs_pyscraper.models.job.job import Job
 logging.basicConfig(level=logging.INFO)
 
 class ExtractJobInfo:

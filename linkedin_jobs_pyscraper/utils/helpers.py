@@ -1,8 +1,8 @@
 from datetime import datetime, timedelta
 from dateutil.relativedelta import *
-from search.search_jobs import Search
+from linkedin_jobs_pyscraper.search.search_jobs import Search
 import pandas as pd
-from models.filters.filters import  FilterMap
+from linkedin_jobs_pyscraper.models.filters.filters import  FilterMap
 
 
 def get_search_instance(searcher, filters):
@@ -20,7 +20,7 @@ def get_search_instance(searcher, filters):
        str_filter += '&{}={}'.format(filter_map_dict[map_key], filters_dict[filter_key].value )
     
     searcher.search_url = searcher.search_url + str_filter
-    
+
     return Search(searcher)    ## return instantiated searcher object
     
 

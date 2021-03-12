@@ -2,11 +2,10 @@ import requests
 import urllib.request
 from bs4 import BeautifulSoup
 import logging
-from extract.extract_job_info import ExtractJobInfo
-from linkedin_jobs_scraper import LinkedInJobsPyScraper
-from models.search.searcher import Searcher
-from utils import helpers
 import time
+from linkedin_jobs_pyscraper.utils import helpers
+from linkedin_jobs_pyscraper.extract.extract_job_info import ExtractJobInfo
+from linkedin_jobs_pyscraper.models.search.searcher import Searcher
 logging.basicConfig(level=logging.INFO)
 
 
@@ -45,7 +44,6 @@ class Search:
 
                 self.logger.info('Searching jobs in page {}/{}'.format(i+1, self.searcher.search_pages_per_search_term))
                 url = self.searcher.search_url.format(search_term, self.searcher.location, i) # Set the URL you want to webscrape from
-                print(url)
                 response = requests.get(url)  # Connect to the URL
                 jobs_soup = BeautifulSoup(response.text, "html.parser") # Parse HTML and save to BeautifulSoup object
                 
