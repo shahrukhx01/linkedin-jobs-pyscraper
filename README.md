@@ -6,7 +6,7 @@
 pip install linkedin-jobs-pyscraper
 ```
 2. Example Usage
-```bash
+```python
 from linkedin_jobs_pyscraper.models.search.searcher import Searcher
 from linkedin_jobs_pyscraper.models.filters import filters
 from linkedin_jobs_pyscraper.linkedin_jobs_scraper import LinkedInJobsPyScraper
