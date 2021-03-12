@@ -1,0 +1,70 @@
+## bs4 config
+job_title_element: li
+
+job_title_element_class: 'result-card job-result-card result-card--with-hover-state'
+
+search_url: https://www.linkedin.com/jobs/search?keywords={}&location=Germany&geoId=101282230&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1&redirect=false&position=1&pageNum={}
+
+job_detail_url: https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{}
+
+job_id_element_identifier: data-id
+
+total_search_pages: 50
+
+li_jobs_api: https://www.linkedin.com/jobs-guest/jobs/api/jobPosting/{}
+
+job_meta_info_class: job-criteria__list
+
+n_applicants_class: 'topcard__flavor--metadata topcard__flavor--bullet num-applicants__caption'
+
+job_date_class: 'topcard__flavor--metadata posted-time-ago__text'
+
+job_location_class: 'topcard__flavor topcard__flavor--bullet'
+
+employer_name_class: 'topcard__org-name-link topcard__flavor--black-link'
+
+job_title_class: topcard__title
+
+## tracking file config
+job_ids_file: job_ids.txt
+
+scraper_history_file: scraper_history.txt
+
+es_index: linked_jobs
+
+es_host: https://o5hx55nyjb:zz9k2ndv2z@linkedin-analytics-6026422042.us-east-1.bonsaisearch.net:443
+
+es_port: 443
+
+## search config
+
+search_terms:
+  - 'data analyst'
+  - 'data scientist'
+  - 'data engineer'
+  - 'software entwickler'
+  - 'data engineer'
+  - 'systems engineer'
+  - 'artificial intelligence'
+  - 'machine learning engineer'
+  - 'research scientist'
+  - 'Computer Vision'
+  - 'NLP'
+  - 'data analytics'
+  - 'self driving'
+  - 'cloud'
+  - 'network engineer'
+  - 'business intelligence'
+  - 'visualization'
+  - 'AWS'
+  - 'big data engineer'
+  - 'database administrator'
+  - 'data consultant'
+  - 'computer science'
+  - 'phd computer'
+  - 'software test'
+
+## mongodb config
+mongo_connect_url: mongodb+srv://{}:{}@cluster0.dopto.mongodb.net/{}?retryWrites=true&w=majority
+mongo_db: linkedin_jobs
+mongo_collection: linkedin_jobs
