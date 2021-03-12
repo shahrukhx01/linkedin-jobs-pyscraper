@@ -44,7 +44,8 @@ class Search:
             for i in range(self.searcher.search_pages_per_search_term):
 
                 self.logger.info('Searching jobs in page {}/{}'.format(i+1, self.searcher.search_pages_per_search_term))
-                url = self.searcher.search_url.format(search_term, i) # Set the URL you want to webscrape from
+                url = self.searcher.search_url.format(search_term, self.searcher.location, i) # Set the URL you want to webscrape from
+                print(url)
                 response = requests.get(url)  # Connect to the URL
                 jobs_soup = BeautifulSoup(response.text, "html.parser") # Parse HTML and save to BeautifulSoup object
                 

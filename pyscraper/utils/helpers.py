@@ -2,15 +2,25 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import *
 from search.search_jobs import Search
 import pandas as pd
+from models.filters.filters import  FilterMap
 
 
-def get_search_instance(searcher):
+def get_search_instance(searcher, filters):
     """
     Creates search instance for running the search on LinkedIn.
     Keyword arguments:
     config -- pydantic model
     """
-    ## create searcher model
+    ## create searcher model & create dict filter with map
+    filter_map = FilterMap()
+    filter_map_dict = filter_map.__dict__
+    filters_dict = filters.__dict__
+    str_filter = ''
+    for map_key, filter_key in  zip(sorted(filter_map_dict.keys()), sorted(filters_dict.keys())):
+       str_filter += '&{}={}'.format(filter_map_dict[map_key], filters_dict[filter_key].value )
+    
+    searcher.search_url = searcher.search_url + str_filter
+    
     return Search(searcher)    ## return instantiated searcher object
     
 

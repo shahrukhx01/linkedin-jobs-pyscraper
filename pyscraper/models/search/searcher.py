@@ -9,9 +9,10 @@ class Searcher(BaseModel):
     batch_size -- number of data points after which to checkpoint data to file
     output_filepath -- path to csv file on disk
     """
-    search_url : str = 'https://www.linkedin.com/jobs/search?keywords={}&location=Germany&geoId=101282230&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1&redirect=false&position=1&pageNum={}'
+    search_url : str = 'https://www.linkedin.com/jobs/search?keywords={}&location={}&trk=public_jobs_jobs-search-bar_search-submit&f_TP=1&redirect=false&position=1&pageNum={}'
     search_pages_per_search_term : int
     search_terms : list
+    location: str = ''
     batch_size: int
     output_filepath: str = 'out.csv'
     batch_num: int = 0
