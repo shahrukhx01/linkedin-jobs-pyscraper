@@ -1,21 +1,32 @@
-# Linkedin Analytics
+# Linkedin Jobs PyScraper
 
-## How to run
-1. Clone repository
+## Install Package from Pypi
+1. Install it using pip.
 ```bash
-git clone git@github.com:ahmadabdullah247/linkedin_analytics.git
-cd 'linkedin_analytics'
+pip install linkedin-jobs-pyscraper
 ```
-2. (Optional) For ease of reproducibility I like to keep my project libraries seperate. Feel free to omit this if you like. 
-```bash
-python -m virtualenv .venv
-source .venv/bin/activate
-```
-3. This will install all the libraries you need to run the server.
-```bash
-pip install -r requirements.txt
-```
-4. You can run the server by using any one of the following commands
-```bash
-python app.py
+## Example Usage
+2. Use it in your code
+```python
+from linkedin_jobs_pyscraper.models.search.searcher import Searcher
+from linkedin_jobs_pyscraper.models.filters import filters
+from linkedin_jobs_pyscraper.linkedin_jobs_scraper import LinkedInJobsPyScraper
+
+## create searach query with configurations
+searcher = Searcher(
+    search_pages_per_search_term = 4,
+    search_terms = ['data analyst', 'data scientist'],
+    batch_size = 5,
+    output_filepath = 'out.csv',
+    location = 'Germany'
+    )
+
+search_filter = filters.Filters(
+    experience= filters.ExperienceLevelFilters.INTERNSHIP,
+    job_type= filters.TypeFilters.INTERNSHIP,
+    relevance= filters.RelevanceFilters.RECENT,
+    time= filters.TimeFilters.MONTH
+    )
+scraper = LinkedInJobsPyScraper(searcher= searcher, filters=search_filter) 
+scraper.start()
 ```
