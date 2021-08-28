@@ -45,3 +45,6 @@ The library can crawl the following fields of data:
 * industries_0	
 * industries_1	
 * industries_2
+
+
+**Currently not being maintained**
